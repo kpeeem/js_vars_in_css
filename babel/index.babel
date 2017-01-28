@@ -1,0 +1,70 @@
+class Application extends React.Component {
+  state = {
+    buttonWidth:200,
+    buttonHeight:50
+  };
+  // componentDidMount(){
+  //   const {state, props} = this;
+  //   const style = document.createElement('style');
+  //   style.innerHTML =  `
+  //     .main {
+  //       --button-width: ${state.buttonWidth}px; 
+  //       --button-height: ${state.buttonHeight}px;
+  //     }
+  //   `;
+  //   this.refs.main.getDOMNode().appendChild(style)
+  // };
+  renderStyles(){
+    const {state, props} = this;
+    return <style>
+      {
+        `.main {
+          --button-width: ${state.buttonWidth}px; 
+          --button-height: ${state.buttonHeight}px;
+        }`
+      }
+      </style>
+  };
+  overrideRender(){
+    const {state, props} = this;
+    return <div className="main" ref="main">
+      <div>React: js vars to css</div>
+      <div className="slider">
+          <label>height: </label>
+          <input 
+            type="range" 
+            id="height" 
+            onChange={(e) => this.setState({buttonHeight:e.target.value})} 
+            min="30" max="100" 
+            value={state.buttonHeight} />
+        </div>
+        <div className="slider">
+          <label>width: </label>
+          <input 
+            type="range" 
+            id="width" 
+            onChange={(e) => this.setState({buttonWidth:e.target.value})} 
+            min="100" 
+            max="500" 
+            value="10" 
+            value={state.buttonWidth} 
+           />
+        </div>
+
+        <button>
+        Baton
+        </button>
+   </div>;
+  }
+  render() {
+    return <component>
+        {this.renderStyles()}
+        {this.overrideRender()}
+      </component>;
+  }
+}
+
+/*
+ * Render the above component into the div#app
+ */
+React.render(<Application />, document.getElementById('app'));

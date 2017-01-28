@@ -1,2 +1,5 @@
-# js_vars_in_css
-Update CSS Variables with REACT
+# Update CSS Variables with REACT
+
+Try to change css variables in js code
+
+[DEMO](https://codepen.io/kpem/pen/ygPRmY)
